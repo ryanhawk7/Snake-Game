@@ -10,6 +10,14 @@ let score = 0
 let intervalTime = 1000
 let speed = 0.9
 let timerId = 0
+let audioSpeed=0.8
+let audioSpeedAddition=0.1
+var audio = new Audio('Automation.mp3');
+audio.loop=true
+audio.volume=0.3
+audio.playbackRate=audioSpeed
+var gameOverVar = document.getElementById("gameOverMessage");
+
 
 function createGrid() {
     //create 100 of these elements with a for loop
@@ -44,6 +52,8 @@ function startGame() {
     //readd the class of snake to our new currentSnake
     currentSnake.forEach(index => squares[index].classList.add('snake'))
     timerId = setInterval(move, intervalTime)
+    audio.play();
+    gameOverVar.style.display = "none";
 }
 
 function move() {
@@ -54,7 +64,11 @@ function move() {
         (currentSnake[0] - width < 0 && direction === -width) || //if snake has hit top
         squares[currentSnake[0] + direction].classList.contains('snake')
     )
-    return clearInterval(timerId)
+    return clearInterval(timerId), 
+    gameOver(),
+    gameOverVar.style.display = "block";
+
+
 
     //remove last element from our currentSnake array
     const tail = currentSnake.pop()
@@ -86,6 +100,8 @@ function move() {
         intervalTime = intervalTime * speed
         console.log(intervalTime)
         timerId = setInterval(move, intervalTime)
+        audioSpeed = audioSpeed + audioSpeedAddition
+        audio.playbackRate=audioSpeed
     }
     
     
@@ -94,7 +110,9 @@ function move() {
 }
 
 
-
+function gameOver() {
+    audio.pause();
+}
 
 
 

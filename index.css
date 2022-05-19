@@ -1,6 +1,7 @@
 html, body {
     margin: 10;
     padding: 10;
+    text-align: center;
 }
 
 .grid {
@@ -8,6 +9,7 @@ html, body {
     flex-wrap: wrap;
     width: 200px;
     height: 200px;
+    margin: auto;
     border: solid 2px black;
 }
 
@@ -21,5 +23,12 @@ html, body {
 }
 
 .apple {
-    background-color: blue;
+    background-color: red;
 }
+
+#gameOverMessage {
+    width: 100%;
+    padding: 50px 0;
+    background-color: lightblue;
+    margin-top: 20px;
+  }
