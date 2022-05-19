@@ -1,4 +1,4 @@
-Snake game tutorial from scrimba.com
+**Snake game tutorial from scrimba.com**
 
 Quick start:
 
